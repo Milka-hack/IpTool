@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milkaガ ip tool</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Milka ip tool</h1>
+        
+        <div class="tool-container">
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('ip-tool')">IP Analyzer</button>
+                <button class="tab" onclick="switchTab('dns-tool')">DNS Inspector</button>
+                <button class="tab" onclick="switchTab('port-scan')">Port Scanner</button>
+            </div>
+
+            <!-- IP Tool Section -->
+            <div id="ip-tool" class="tab-content active">
+                <div class="input-group">
+                    <input type="text" id="ip-input" placeholder="Enter IP Address">
+                    <button onclick="analyzeIP()">Scan IP</button>
+                </div>
+                <div id="ip-results" class="results"></div>
+                <div id="map" class="minimap"></div>
+            </div>
+
+            <!-- DNS Tool Section -->
+            <div id="dns-tool" class="tab-content">
+                <div class="input-group">
+                    <input type="text" id="domain-input" placeholder="Enter Domain Name">
+                    <button onclick="dnsLookup()">Resolve DNS</button>
+                </div>
+                <div id="dns-results" class="results"></div>
+            </div>
+
+            <!-- Port Scanner Section -->
+            <div id="port-scan" class="tab-content">
+                <div class="input-group">
+                    <input type="text" id="target-ip" placeholder="Target IP Address">
+                    <input type="number" id="port-range" placeholder="Max Port (1-65535)" min="1" max="65535">
+                    <button onclick="startPortScan()">Start Scan</button>
+                </div>
+                <div class="scan-progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <div id="port-results" class="results"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
